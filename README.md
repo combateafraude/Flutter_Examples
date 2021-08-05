@@ -1,6 +1,6 @@
 <div align="center">
   
-    [<img width="400px" src="/resources/combateafraude_logo.png?raw=true">](https://combateafraude.com)
+  [<img width="400px" src="/resources/combateafraude_logo.png?raw=true">](https://combateafraude.com)
 
 
   # Combate à Fraude - Flutter Plugin SDKs
