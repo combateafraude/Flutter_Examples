@@ -73,7 +73,6 @@ android {
     dependencies { 
         implementation "androidx.camera:camera-view:1.0.0-alpha24"
         implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
-        implementation 'com.combateafraude.sdk:face-authenticator:4.3.0'
 
 
     }

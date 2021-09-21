@@ -68,31 +68,21 @@ class _MyAppState extends State<MyApp> {
     DocumentDetector documentDetector =
         new DocumentDetector(mobileToken: mobileToken);
 
-    DocumentDetectorCustomizationAndroid customDocAndroid =
-        new DocumentDetectorCustomizationAndroid(
-            whiteMaskResIdName: "document_whitemask",
-            greenMaskResIdName: "document_greenmask",
-            redMaskResIdName: "document_redmask");
-
-    DocumentDetectorAndroidSettings androidSettings =
-        new DocumentDetectorAndroidSettings(customization: customDocAndroid);
     //Custom showPreview
     ShowPreviewDoc.ShowPreview showPreview = new ShowPreviewDoc.ShowPreview(
         show: true,
-        title: "A foto está legal?",
-        subTitle:
-            "Veja se todas informações estão legíveis, facilitando assim, sua aprovação",
-        confirmLabel: "Está boa, quero esta!",
-        retryLabel: "Tirar outra foto");
+        titleResIdName: "preview_title",
+        subTitleResIdName: "preview_subtitle",
+        confirmLabelResIdName: "preview_accept",
+        retryLabelResIdName: "preview_try_again");
 
     //Custom messageSettings
     MessageSettingsDoc.MessageSettings messageSettings =
         new MessageSettingsDoc.MessageSettings(
-            holdItMessage: "Segure seu dispositivo desta forma",
-            lowQualityDocumentMessage:
-                "A qualidade não está boa. Não conseguimos ler, tire outra",
-            uploadingImageMessage: "Salvando sua foto...",
-            verifyingQualityMessage: "Verificando qualidade da foto...");
+            holdItMessageResIdName: "hold_it_caf",
+            lowQualityDocumentMessageResIdName: "low_Quality_Document",
+            uploadingImageMessageResIdName: "uploading_Image_Message",
+            verifyingQualityMessageResIdName: "verifying_Quality_Message");
 
     documentDetector.setShowPreview(showPreview);
 
@@ -156,25 +146,17 @@ class _MyAppState extends State<MyApp> {
     PassiveFaceLiveness passiveFaceLiveness =
         new PassiveFaceLiveness(mobileToken: mobileToken);
 
-    //Custom showPreview
-    ShowPreview showPreview = new ShowPreview(
-      show: true,
-      title: "A foto está legal?",
-      subTitle:
-          "Veja se todas informações estão legíveis, facilitando assim, sua aprovação",
-      confirmLabel: "Está boa, quero esta!",
-      retryLabel: "Tirar outra foto",
-    );
-
     //Custom messageSettings
     MessageSettings messageSettings = new MessageSettings(
-      faceNotFoundMessage: "Não encontramos um rosto em nossa base de dados",
-      faceTooFarMessage: "Aproxima o teu rosto",
-      faceTooCloseMessage: "Afasta o teu rosto",
-      faceNotFittedMessage: "Encaixe o teu rosto",
-      verifyingLivenessMessage: "Verificando a tua selfie...",
-      holdItMessage: "Segure seu dispositivo desse jeito",
-    );
+        stepName: "face_register_caf",
+        faceNotFoundMessage: "face_not_found_caf",
+        faceTooFarMessage: "face_too_far_caf",
+        faceTooCloseMessage: "face_too_close_caf",
+        faceNotFittedMessage: "fit_your_face_caf",
+        multipleFaceDetectedMessage: "more_than_one_face_message",
+        verifyingLivenessMessage: "verifying_liveness_caf",
+        holdItMessage: "hold_it_caf",
+        invalidFaceMessage: "invalid_face_caf");
 
     PassiveFaceLivenessCustomizationAndroid costumizationAndroid =
         new PassiveFaceLivenessCustomizationAndroid(
@@ -187,8 +169,6 @@ class _MyAppState extends State<MyApp> {
         new PassiveFaceLivenessAndroidSettings(
             showButtonTime: 25000, customization: costumizationAndroid);
     //The button time is defined on Milliseconds. ex: 25000 --> 25seg
-
-    passiveFaceLiveness.setShowPreview(showPreview);
 
     passiveFaceLiveness.setAndroidSettings(passiveFaceLivenessAndroidSettings);
 

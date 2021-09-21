@@ -47,6 +47,7 @@ class _MyAppState extends State<MyApp> {
   String peopleId = "";
 
   String mobileToken = "";
+
   @override
   void initState() {
     super.initState();

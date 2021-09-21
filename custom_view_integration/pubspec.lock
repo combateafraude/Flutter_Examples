@@ -54,11 +54,11 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "document-detector-v4.4.6"
-      resolved-ref: e4f7558e30908ed928b2b9cd598ea473a9fb7d05
+      ref: "document-detector-v4.6.7"
+      resolved-ref: "12ce3603430f40dd81ccf1333be9a6d55208d308"
       url: "https://github.com/combateafraude/Flutter.git"
     source: git
-    version: "4.4.6"
+    version: "4.6.7"
   face_authenticator:
     dependency: "direct main"
     description:
@@ -103,11 +103,11 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "passive-face-liveness-v2.3.6"
-      resolved-ref: "0e6852103b48909442ea2ba95c2e30e03e66a868"
+      ref: "passive-face-liveness-v2.5.10"
+      resolved-ref: "0d72d6705a0c05f92491bee5b12cd48cd1f16e79"
       url: "https://github.com/combateafraude/Flutter.git"
     source: git
-    version: "2.3.6"
+    version: "2.5.10"
   path:
     dependency: transitive
     description:

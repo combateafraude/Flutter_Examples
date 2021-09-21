@@ -28,7 +28,7 @@ dependencies:
   document_detector:
     git:
       url: https://github.com/combateafraude/Flutter.git
-      ref: document-detector-v4.4.6
+      ref: document-detector-v4.6.7
   face_authenticator:
     git:
       url: https://github.com/combateafraude/Flutter.git
@@ -36,7 +36,7 @@ dependencies:
   passive_face_liveness:
     git:
       url: https://github.com/combateafraude/Flutter.git
-      ref: passive-face-liveness-v2.3.6
+      ref: passive-face-liveness-v2.5.10
 
 dev_dependencies:
   flutter_test:
