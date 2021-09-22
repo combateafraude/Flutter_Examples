@@ -1,7 +1,8 @@
 import 'package:document_detector/android/android_settings.dart';
 import 'package:document_detector/android/capture_stage/capture_mode.dart';
 import 'package:document_detector/android/capture_stage/capture_stage.dart';
-import 'package:document_detector/android/customization.dart';
+import 'package:document_detector/android/customization.dart'
+    as CustomizationDoc;
 import 'package:document_detector/message_settings.dart' as MessageSettingsDoc;
 import 'package:document_detector/show_preview.dart' as ShowPreviewDoc;
 import 'package:document_detector/document_detector_step.dart';
@@ -67,6 +68,13 @@ class _MyAppState extends State<MyApp> {
 
     DocumentDetector documentDetector =
         new DocumentDetector(mobileToken: mobileToken);
+
+    CustomizationDoc.DocumentDetectorCustomizationAndroid customizationDoc =
+        new CustomizationDoc.DocumentDetectorCustomizationAndroid(
+      whiteMaskResIdName: "document_whitemask",
+      redMaskResIdName: "document_redmask",
+      greenMaskResIdName: "document_greenmask",
+    );
 
     //Custom showPreview
     ShowPreviewDoc.ShowPreview showPreview = new ShowPreviewDoc.ShowPreview(
