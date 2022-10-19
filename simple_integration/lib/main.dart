@@ -101,8 +101,7 @@ class _MyAppState extends State<MyApp> {
           captureMode: CaptureMode.MANUAL),
     ];
     DocumentDetectorAndroidSettings detectorAndroidSettings =
-        new DocumentDetectorAndroidSettings(
-            captureStages: captureStages,
+        new DocumentDetectorAndroidSettings(captureStages: captureStages);
 
     documentDetector.setAndroidSettings(detectorAndroidSettings);
     documentDetector.setPeopleId(peopleId);
