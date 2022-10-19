@@ -1,6 +1,8 @@
 import 'package:document_detector/android/android_settings.dart';
 import 'package:document_detector/android/capture_stage/capture_mode.dart';
 import 'package:document_detector/android/capture_stage/capture_stage.dart';
+import 'package:document_detector/android/capture_stage/detection_settings.dart';
+import 'package:document_detector/android/capture_stage/quality_settings.dart';
 import 'package:document_detector/android/customization.dart';
 import 'package:document_detector/message_settings.dart' as MessageSettingsDoc;
 import 'package:document_detector/show_preview.dart' as ShowPreviewDoc;
@@ -16,6 +18,7 @@ import 'package:document_detector/document_detector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:passive_face_liveness/android/customization.dart';
 import 'package:passive_face_liveness/android/settings.dart';
 import 'package:passive_face_liveness/show_preview.dart';
 import 'package:passive_face_liveness/passive_face_liveness.dart';
@@ -68,6 +71,41 @@ class _MyAppState extends State<MyApp> {
     DocumentDetector documentDetector =
         new DocumentDetector(mobileToken: mobileToken);
 
+    QualitySettings qualitySettings = QualitySettings(1.8);
+    DetectionSettings detectionSettings = DetectionSettings(0.91, 5);
+
+    List<CaptureStage> captureStages = [
+      CaptureStage(
+          durationMillis: 20000,
+          wantSensorCheck: true,
+          qualitySettings: qualitySettings,
+          detectionSettings: detectionSettings,
+          captureMode: CaptureMode.AUTOMATIC),
+      CaptureStage(
+          durationMillis: 15000,
+          wantSensorCheck: false,
+          qualitySettings: qualitySettings,
+          detectionSettings: detectionSettings,
+          captureMode: CaptureMode.AUTOMATIC),
+      CaptureStage(
+          durationMillis: 15000,
+          wantSensorCheck: false,
+          qualitySettings: qualitySettings,
+          detectionSettings: detectionSettings,
+          captureMode: CaptureMode.MANUAL),
+      CaptureStage(
+          durationMillis: 0,
+          wantSensorCheck: false,
+          qualitySettings: null,
+          detectionSettings: null,
+          captureMode: CaptureMode.MANUAL),
+    ];
+    DocumentDetectorAndroidSettings detectorAndroidSettings =
+        new DocumentDetectorAndroidSettings(
+            captureStages: captureStages,
+
+    documentDetector.setAndroidSettings(detectorAndroidSettings);
+    documentDetector.setPeopleId(peopleId);
     documentDetector.setDocumentFlow(documentSteps);
 
     // You can use the other parameters here.
@@ -126,6 +164,15 @@ class _MyAppState extends State<MyApp> {
 
     PassiveFaceLiveness passiveFaceLiveness =
         new PassiveFaceLiveness(mobileToken: mobileToken);
+    PassiveFaceLivenessCustomizationAndroid pflCustomizationAndroid =
+        PassiveFaceLivenessCustomizationAndroid(
+            layoutResIdName: "layout_editado");
+    PassiveFaceLivenessAndroidSettings pflSettingsAndroid =
+        PassiveFaceLivenessAndroidSettings(
+      customization: pflCustomizationAndroid,
+    );
+
+    passiveFaceLiveness.setAndroidSettings(pflSettingsAndroid);
 
 //Creating result for PassiveFaceLiveness
     PassiveFaceLivenessResult passiveFaceLivenessResult =

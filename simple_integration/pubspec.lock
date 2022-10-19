@@ -42,7 +42,7 @@ packages:
       name: collection
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.15.0"
+    version: "1.16.0"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -54,27 +54,27 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "document-detector-v5.5.0"
-      resolved-ref: "56a9260b66510c365b28e9e5dda486db967ed610"
+      ref: "document-detector-v5.23.5"
+      resolved-ref: "1469a40a8f01d17b17b20e503c5dadef8ef1bfba"
       url: "https://github.com/combateafraude/Flutter.git"
     source: git
-    version: "5.5.0"
+    version: "5.23.5"
   face_authenticator:
     dependency: "direct main"
     description:
       path: "."
-      ref: "face-authenticator-v1.7.0"
-      resolved-ref: f225cd90e4bd00eb0920619f68675d0b66c43590
+      ref: "face-authenticator-v3.10.0"
+      resolved-ref: f997930524a576b098da1e099aa3e13381f43b85
       url: "https://github.com/combateafraude/Flutter.git"
     source: git
-    version: "1.7.0"
+    version: "3.10.0"
   fake_async:
     dependency: transitive
     description:
       name: fake_async
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.0"
+    version: "1.3.0"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -92,6 +92,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.12.11"
+  material_color_utilities:
+    dependency: transitive
+    description:
+      name: material_color_utilities
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.4"
   meta:
     dependency: transitive
     description:
@@ -103,18 +110,18 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "passive-face-liveness-v2.5.10"
-      resolved-ref: "0d72d6705a0c05f92491bee5b12cd48cd1f16e79"
+      ref: "passive-face-liveness-v4.29.0"
+      resolved-ref: e7bde8f34e622c470850268cdaad3db2029d5b9d
       url: "https://github.com/combateafraude/Flutter.git"
     source: git
-    version: "2.5.10"
+    version: "4.29.0"
   path:
     dependency: transitive
     description:
       name: path
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.0"
+    version: "1.8.1"
   permission_handler:
     dependency: "direct main"
     description:
@@ -147,7 +154,7 @@ packages:
       name: source_span
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.1"
+    version: "1.8.2"
   stack_trace:
     dependency: transitive
     description:
@@ -182,21 +189,14 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.3"
-  typed_data:
-    dependency: transitive
-    description:
-      name: typed_data
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.3.0"
+    version: "0.4.9"
   vector_math:
     dependency: transitive
     description:
       name: vector_math
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.1"
+    version: "2.1.2"
 sdks:
-  dart: ">=2.14.0 <3.0.0"
+  dart: ">=2.17.0-0 <3.0.0"
   flutter: ">=2.5.0"
