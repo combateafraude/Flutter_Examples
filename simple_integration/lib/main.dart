@@ -3,12 +3,8 @@ import 'package:document_detector/android/capture_stage/capture_mode.dart';
 import 'package:document_detector/android/capture_stage/capture_stage.dart';
 import 'package:document_detector/android/capture_stage/detection_settings.dart';
 import 'package:document_detector/android/capture_stage/quality_settings.dart';
-import 'package:document_detector/android/customization.dart';
-import 'package:document_detector/message_settings.dart' as MessageSettingsDoc;
-import 'package:document_detector/show_preview.dart' as ShowPreviewDoc;
 import 'package:document_detector/document_detector_step.dart';
 import 'package:document_detector/document_type.dart';
-import 'package:document_detector/ios/ios_settings.dart';
 import 'package:document_detector/result/capture.dart';
 import 'package:document_detector/result/document_detector_failure.dart';
 import 'package:document_detector/result/document_detector_result.dart';
@@ -18,14 +14,10 @@ import 'package:document_detector/document_detector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:passive_face_liveness/android/customization.dart';
-import 'package:passive_face_liveness/android/settings.dart';
-import 'package:passive_face_liveness/show_preview.dart';
 import 'package:passive_face_liveness/passive_face_liveness.dart';
 import 'package:passive_face_liveness/result/passive_face_liveness_failure.dart';
 import 'package:passive_face_liveness/result/passive_face_liveness_result.dart';
 import 'package:passive_face_liveness/result/passive_face_liveness_success.dart';
-import 'package:passive_face_liveness/message_settings.dart';
 
 import 'package:face_authenticator/face_authenticator.dart';
 import 'package:face_authenticator/result/face_authenticator_failure.dart';
@@ -118,33 +110,33 @@ class _MyAppState extends State<MyApp> {
         result = "Success!";
         print(DocumentType);
         description = "Type: " +
-            (documentResult.type != null ? documentResult.type : "null");
+            (documentResult.type != null ? documentResult.type! : "null");
 
         for (Capture capture in documentResult.captures) {
           description += "\n\n\tCapture:\n\timagePath: " +
-              capture.imagePath +
+              capture.imagePath! +
               "\n\timageUrl: " +
               (capture.imageUrl != null
-                  ? capture.imageUrl.split("?")[0] + "..."
+                  ? capture.imageUrl!.split("?")[0] + "..."
                   : "null") +
               "\n\tlabel: " +
-              (capture.label != null ? capture.label : "null") +
+              (capture.label != null ? capture.label! : "null") +
               "\n\tquality: " +
               (capture.quality != null ? capture.quality.toString() : "null");
         }
       } else if (documentResult is DocumentDetectorFailure) {
         result = "Falha!";
         description = "\tType: " +
-            documentResult.type +
+            documentResult.type! +
             "\n\tMessage: " +
-            documentResult.message;
+            documentResult.message!;
         print(DocumentType);
       } else {
         result = "Closed!";
       }
     } on PlatformException catch (err) {
       result = "Excpection!";
-      description = err.message;
+      description = err.message!;
     }
 
     if (!mounted) return;
@@ -163,43 +155,34 @@ class _MyAppState extends State<MyApp> {
 
     PassiveFaceLiveness passiveFaceLiveness =
         new PassiveFaceLiveness(mobileToken: mobileToken);
-    PassiveFaceLivenessCustomizationAndroid pflCustomizationAndroid =
-        PassiveFaceLivenessCustomizationAndroid(
-            layoutResIdName: "layout_editado");
-    PassiveFaceLivenessAndroidSettings pflSettingsAndroid =
-        PassiveFaceLivenessAndroidSettings(
-      customization: pflCustomizationAndroid,
-    );
 
-    passiveFaceLiveness.setAndroidSettings(pflSettingsAndroid);
+// You can use the other parameters here.
+// You can see some of them on customView_integration or check our documentation
 
 //Creating result for PassiveFaceLiveness
     PassiveFaceLivenessResult passiveFaceLivenessResult =
         await passiveFaceLiveness.start();
-
-    // You can use the other parameters here.
-    // You can see some of them on customView_integration or check our documentation
 
     //Checking for the results of PassiveFaceLiveness
     if (passiveFaceLivenessResult is PassiveFaceLivenessSuccess) {
       result = "Success!";
 
       description += "\n\timagePath: " +
-          passiveFaceLivenessResult.imagePath +
+          passiveFaceLivenessResult.imagePath! +
           "\n\timageUrl: " +
           (passiveFaceLivenessResult.imageUrl != null
-              ? passiveFaceLivenessResult.imageUrl.split("?")[0] + "..."
+              ? passiveFaceLivenessResult.imageUrl!.split("?")[0] + "..."
               : "null") +
           "\n\tsignedResponse: " +
           (passiveFaceLivenessResult.signedResponse != null
-              ? passiveFaceLivenessResult.signedResponse
+              ? passiveFaceLivenessResult.signedResponse!
               : "null");
     } else if (passiveFaceLivenessResult is PassiveFaceLivenessFailure) {
       result = "Falha!";
       description = "\tType: " +
-          passiveFaceLivenessResult.type +
+          passiveFaceLivenessResult.type! +
           "\n\tMessage: " +
-          passiveFaceLivenessResult.message;
+          passiveFaceLivenessResult.message!;
     } else {
       result = "Closed!";
     }
@@ -234,23 +217,23 @@ class _MyAppState extends State<MyApp> {
         result = "Success!";
 
         description += "\n\tauthenticated: " +
-            (faceAuthenticatorResult.authenticated ? "true" : "false") +
+            (faceAuthenticatorResult.authenticated! ? "true" : "false") +
             "\n\tsignedResponse: " +
             (faceAuthenticatorResult.signedResponse != null
-                ? faceAuthenticatorResult.signedResponse
+                ? faceAuthenticatorResult.signedResponse!
                 : "null");
       } else if (faceAuthenticatorResult is FaceAuthenticatorFailure) {
         result = "Failed!";
         description = "\tType: " +
-            faceAuthenticatorResult.type +
+            faceAuthenticatorResult.type! +
             "\n\tMessage: " +
-            faceAuthenticatorResult.message;
+            faceAuthenticatorResult.message!;
       } else {
         result = "Closed!";
       }
     } on PlatformException catch (err) {
       result = "Excpection!";
-      description = err.message;
+      description = err.message!;
     }
 
     if (!mounted) return;

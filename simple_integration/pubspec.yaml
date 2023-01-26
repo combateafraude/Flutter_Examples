@@ -18,25 +18,25 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.11.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  permission_handler: ^8.1.3  
+  permission_handler: ^10.0.0
   document_detector:
     git:
       url: https://github.com/combateafraude/Flutter.git
-      ref: document-detector-v5.23.5
+      ref: document-detector-v5.25.0
   face_authenticator:
     git:
       url: https://github.com/combateafraude/Flutter.git
-      ref: face-authenticator-v3.10.0   
+      ref: face-authenticator-v3.12.0
   passive_face_liveness:
     git:
       url: https://github.com/combateafraude/Flutter.git
-      ref: passive-face-liveness-v4.29.0
+      ref: passive-face-liveness-v5.0.0-rc01
 
 
 dev_dependencies:

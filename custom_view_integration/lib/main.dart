@@ -67,36 +67,41 @@ class _MyAppState extends State<MyApp> {
     String description = "";
 
     DocumentDetector documentDetector =
-        new DocumentDetector(mobileToken: mobileToken);
+        DocumentDetector(mobileToken: mobileToken);
 
     CustomizationDoc.DocumentDetectorCustomizationAndroid customizationDoc =
-        new CustomizationDoc.DocumentDetectorCustomizationAndroid(
+        CustomizationDoc.DocumentDetectorCustomizationAndroid(
       whiteMaskResIdName: "document_whitemask",
       redMaskResIdName: "document_redmask",
       greenMaskResIdName: "document_greenmask",
     );
 
+    DocumentDetectorAndroidSettings androidSettings =
+        DocumentDetectorAndroidSettings(customization: customizationDoc);
+
     //Custom showPreview
-    ShowPreviewDoc.ShowPreview showPreview = new ShowPreviewDoc.ShowPreview(
+    ShowPreviewDoc.ShowPreview showPreview = ShowPreviewDoc.ShowPreview(
         show: true,
-        titleResIdName: "preview_title",
-        subTitleResIdName: "preview_subtitle",
-        confirmLabelResIdName: "preview_accept",
-        retryLabelResIdName: "preview_try_again");
+        title: "preview_title",
+        subtitle: "preview_subtitle",
+        confirmLabel: "preview_accept",
+        retryLabel: "preview_try_again");
 
     //Custom messageSettings
     MessageSettingsDoc.MessageSettings messageSettings =
-        new MessageSettingsDoc.MessageSettings(
-            holdItMessageResIdName: "hold_it_caf",
-            lowQualityDocumentMessageResIdName: "low_Quality_Document",
-            uploadingImageMessageResIdName: "uploading_Image_Message",
-            verifyingQualityMessageResIdName: "verifying_Quality_Message");
+        MessageSettingsDoc.MessageSettings(
+            holdItMessage: "hold_it_caf",
+            lowQualityDocumentMessage: "low_Quality_Document",
+            uploadingImageMessage: "uploading_Image_Message",
+            verifyingQualityMessage: "verifying_Quality_Message");
 
     documentDetector.setShowPreview(showPreview);
 
     documentDetector.setMessageSettings(messageSettings);
 
     documentDetector.setDocumentFlow(documentSteps);
+
+    documentDetector.setAndroidSettings(androidSettings);
 
     //You can use other paramethers to customization here
     //Check what we offer on our documentation: https://github.com/combateafraude/Flutter/tree/document-detector
